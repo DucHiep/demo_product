@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    <link th:href="@{/css/style.default.css}" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- your stylesheet with modifications -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="content">
+    <div class="container-fluid">
+
+        <div class="col-md-12">
+            <div class="box">
+                <form action="#" th:action="@{/material/search}" th:object="${material}" method="get"  role="search">
+                    <div class="form-group">
+                        <section id="ajax-example">
+                            <div class="awesomplete">
+                                <div class="input-group" style="width: 100%">
+                                    <input  placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">
+                                </div>
+                                <!--<input placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">-->
+
+                                <!--<ul role="listbox" id="awesomplete_list_6" hidden="">-->
+                                <!--<li aria-selected="false" id="awesomplete_list_6_item_0"><mark>Ca</mark>nada</li>-->
+                                <!--<li aria-selected="false" id="awesomplete_list_6_item_1"><mark>Ca</mark>meroon</li>-->
+                                <!--<li aria-selected="false" id="awesomplete_list_6_item_2">Madagas<mark>ca</mark>r</li>-->
+                                <!--<li aria-selected="false" id="awesomplete_list_6_item_3">New <mark>Ca</mark>ledonia</li>-->
+                                <!--<li aria-selected="false" id="awesomplete_list_6_item_4">Central Afri<mark>ca</mark>n Republic</li>-->
+                                <!--</ul>-->
+                                <!--<div class="input-group-btn">-->
+                                <!--<button class="btn btn-default" type="submit" value="Submit"><i class="glyphicon glyphicon-search"></i></button>-->
+                                <!--</div>-->
+                                <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true" hidden="">No results found</span>
+                                <!--<div class="input-group">-->
+                                <!--<input  placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">-->
+                                <!--<div class="input-group-btn">-->
+                                <!--<button class="btn btn-default" type="submit" value="Submit"><i class="glyphicon glyphicon-search"></i></button>-->
+                                <!--</div>-->
+                                <!--</div>-->
+
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!--<button type="submit" value="Submit" class="btn btn-default right">Tìm kiếm</button>-->
+
+                </form>
+
+                <form action="#" th:action="@{../product/search}" th:object="${product}" method="get"  role="search">
+                    <div class="form-group">
+                        <section id="ajax-example">
+                            <div class="awesomplete">
+                                <div class="input-group">
+                                    <input  placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">
+                                    <div class="input-group-btn">
+                                        <button id="buttonsearch" class="btn btn-default " type="submit" value="Submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                                <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true" hidden="">No results found</span>
+                            </div>
+                        </section>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.js"></script>
+
+        <script th:src="@{/js/respond.min.js}"></script>
+
+        <script th:src="@{/js/index.js}"></script>
+
+        <script th:src="@{/js/list-product/list-product.js}"></script>
+
+        <script>
+            var ajax = new XMLHttpRequest();
+            ajax.open("GET", "http://"+window.location.host+"/api/material/getallmaterial", true);
+            ajax.onload = function() {
+                var list = JSON.parse(ajax.responseText).data
+                var suggest = []
+                for(var label of list){
+                    suggest.push(reName(label))
+                }
+                function reName(label) {
+                    var obj = {}
+                    obj.label = "<span style='font-size: 90%'>"+label.name+"</span>"
+                    obj.value = label.name
+                    return obj
+                }
+                new Awesomplete(document.querySelector("#ajax-example input"),{ list: suggest });
+            };
+            ajax.send();
+        </script>
+
+
+
+</body>
+
+</html>

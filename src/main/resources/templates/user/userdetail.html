@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+
+    <link th:href="@{/css/style.default.css}" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- your stylesheet with modifications -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top ">
+    <div class="container1 ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a th:href="@{/home}" class="navbar-brand" href="#myPage"><img src="http://giangurestaurant.com/Content/images/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/home}" >Trang chủ</a></li>
+                <li><a th:href="@{/}">MENU</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                <li class="anonymous"><a th:href="@{/login}">Đăng nhập</a></li>
+                <li><a th:href="@{/order/guid}" class="order-anonymous" >Lịch sử mua hàng</a></li>
+                <li class="dropdown user-logged"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><p class="username-logged"></p></a>
+                    <ul class="dropdown-menu" style="background-color: black;">
+                        <li><a th:href="@{/user/detail}" ><span class="glyphicon glyphicon-info-sign"></span>Thông tin tài khoản</a></li>
+                        <li><a th:href="@{/order/user}" class="order-history-link" >Lịch sử mua hàng</a></li>
+                        <li><a class="logout-user" th:href="@{/logout}" ><span class=" glyphicon glyphicon-off logout" ></span>Đăng xuất</a></li>
+
+                        <!--</ul>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="all">
+
+    <div id="content">
+        <div class="container-fluid">
+
+
+            <div class="col-md-12">
+
+                <div class="row" id="productMain">
+
+                    <form th:action="@{/user/detail}" th:object="${user}" method="post">
+                        <fieldset>
+                            <div class="col-sm-3">
+
+                                <div class="img-select-block margin-bottom-15">
+                                    <div th:if="*{avatar}">
+                                        <img class="img-responsive" id="preview-product-img" th:src="*{avatar}"  />
+                                    </div>
+                                    <div th:unless="*{avatar}">
+                                        <img class="img-responsive" id="preview-product-img" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"  />
+                                    </div>
+                                    <input type='file' id="input-select-img-product"/>
+                                    <input type="text" id="avatar" th:field="*{avatar}" style="display: none">
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="box">
+                                    <div class="form-group">
+
+                                        <label >Họ</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="email" type="text" th:field="*{firstName}" class="form-control" name="email" placeholder="Họ">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label >Tên</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input id="email" type="text" th:field="*{lastName}" class="form-control" name="email" placeholder="Tên">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label >Địa chỉ</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <input id="email" type="text" th:field="*{address}" class="form-control" name="email" placeholder="Địa chỉ">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label >Số điện thoại</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                                            <input id="email" type="text" class="form-control" th:field="*{phone}" name="email" placeholder="Phone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Email</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                            <input id="email" type="text" class="form-control" th:field="*{email}" name="email" placeholder="Email">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-default"><i class="glyphicon glyphicon-repeat"></i> Cập nhật thông tin</button>
+
+
+                                </div>
+
+                        </fieldset>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.col-md-12-->
+    </div>
+    <!-- /.container -->
+</div>
+<div id="contact" class="container-fluid bg-grey">
+    <h2 class="text-center" style="color: white">CONTACT</h2>
+    <div class="row">
+        <div class="col-sm-5">
+            <p>Contact us and we'll get back to you within 24 hours.</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+            <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> nghiemxuanhop98@gmail.com</p>
+        </div>
+        <div class="col-sm-7 slideanim">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-default pull-right" type="submit">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+</footer>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+<script th:src="@{/js/respond.min.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/image.js}"></script>
+</body>
+</html>

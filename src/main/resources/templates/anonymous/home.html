@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container1" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a th:href="@{/home}" class="navbar-brand" href="#myPage"><img src="http://giangurestaurant.com/Content/images/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a th:href="@{/home}">TRANG CHỦ</a></li>-->
+                <li><a th:href="@{/}">MENU</a></li>
+                <li><a href="#about">THÔNG TIN</a></li>
+                <li><a href="#menu">ĐẶT BÀN</a></li>
+                <!--<li><a href="#testimonials">CAM KẾT</a></li>-->
+                <li><a href="#contact">LIÊN HỆ</a></li>
+                <li class="anonymous"><a th:href="@{/login}">Đăng nhập</a></li>
+                <li><a th:href="@{/order/guid}" class="order-anonymous" >Lịch sử mua hàng</a></li>
+                <li class="dropdown user-logged"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><p class="username-logged"></p></a>
+                <ul class="dropdown-menu" style="background-color: black;">
+                <li><a th:href="@{/user/detail}" ><span class="glyphicon glyphicon-info-sign"></span>Thông tin tài khoản</a></li>
+                    <li><a th:href="@{/order/user}" class="order-history-link" >Lịch sử mua hàng</a></li>
+                <li><a class="logout-user" th:href="@{/logout}" ><span class=" glyphicon glyphicon-off logout" ></span>Đăng xuất</a></li>
+
+                <!--</ul>-->
+                <!--</li>-->
+                </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="http://giangurestaurant.com/files/images/Banner/banner-01.jpg"  width="100%" height="700">
+            <div class="carousel-caption">
+                <h3>Hà Nội</h3>
+                <p>Bún chả</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="http://giangurestaurant.com/files/images/Banner/banner-02.jpg"  width="100%" height="700">
+            <div class="carousel-caption">
+                <h3>Đà Nẵng </h3>
+                <p>Sườn sốt</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="http://giangurestaurant.com/files/images/Banner/banner-03.jpg"  width="100%" height="700">
+            <div class="carousel-caption">
+                <h3>Tp. Hồ Chí Minh</h3>
+                <p>Thịt nướng</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Left and right controls -->
+<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Trước</span>
+</a>
+<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Sau</span>
+</a>
+</div>
+
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+    <div class="container1">
+        <div class="row">
+            <div class="col-sm-6">
+
+                <h2>Đôi nét về nhà hàng</h2><br>
+                <h4>Tinh hoa ẩm thực Việt luôn có sức hút kì lạ không chỉ với thực khách trong nước mà còn cả các thực khách ngoại quốc yêu nét đẹp truyền thống. Các món ăn Việt Nam luôn mang hương vị đặc trưng cho từng vùng miền. Nhà hàng Sen Vàng tại Hà Nội rất đa dạng và phong phú, tuy nhiên để tìm được một nơi “đúng chất” thì không mấy dễ dàng.</h4><br>
+                <p>Tinh hoa ẩm thực Việt luôn có sức hút kì lạ không chỉ với thực khách trong nước mà còn cả các thực khách ngoại quốc yêu nét đẹp truyền thống. Các món ăn Việt Nam luôn mang hương vị đặc trưng cho từng vùng miền. Nhà hàng Sen Vàng tại Hà Nội rất đa dạng và phong phú, tuy nhiên để tìm được một nơi “đúng chất” thì không mấy dễ dàng..</p>
+            </div>
+            <div class="col-sm-6">
+                <img src="http://giangurestaurant.com/Content/images/about03.jpg" width="100%" height="100%" alt="imgabout">
+            </div>
+        </div>
+    </div>
+</div>
+<!--section-image-->
+<section id="timetable" class="section timetable parallax " style="background-image:
+url(http://giangurestaurant.com/Content/wp-content/uploads/2015/03/opening_hours.jpg);">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12   ">
+                <div>
+                    <h2 class="section-title1">
+                        <span class="timetable-decorator"></span>
+                        <span class="opening-hours">Giờ mở cửa</span>
+                        <span class="timetable-decorator2"></span>
+                    </h2>
+                    <div class="section-subtitle call">Gọi đặt bàn</div>
+                    <div class="row   jt_row-fluid nomargins">
+                        <div class="col-md-3 jt_col  ">
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6   ">
+                            <div>
+                                <div class="section-subtitle days">Thứ hai đén thứ bảy </div>
+                                <div class="section-subtitle hours">
+                                    11:30  <br />
+                                    22:00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 jt_col  ">
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 jt_col  ">
+                            <div>
+                                <div class="number">Liên hệ đặt bàn: +84 243926 2135 (Ext.15)</div>
+                            </div>
+                        </div>
+                    </div><div class="vc_row-full-width"></div>
+                </div>
+            </div>
+        </div><div class="vc_row-full-width"></div>
+
+    </div>
+</section>
+
+
+
+<section id="menu" class="section reservations container-fluid " style="background-color:; ">
+    <div class="container">
+        <div class="row jt_row jt_row-fluid">
+            <div class="col-md-12 jt_col  ">
+                <div >
+                    <div class="text-center">
+                        <h2 class="section-title">Đặt bàn</h2> <div class="row jt_row vc_inner jt_row-fluid nomargins">
+                        <div class="col-md-3 jt_col  ">
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 jt_col  ">
+                            <div>
+                                <div class="section-subtitle">Đặt bàn hãy gọi +84 243926 2135 </div>
+                                <img width="70" height="58" src="http://giangurestaurant.com/Content/wp-content/uploads/2015/03/reservations_logo.png" class="reservations_logo" alt="reservations_logo" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 jt_col  ">
+                            <div>
+
+                            </div>
+                        </div>
+                    </div><div class="vc_row-full-width"></div><div class="voffset20"></div><h4><span class="above">Chào mừng GiaNgu</span></h4><h3>Đặt bàn</h3><h4><span>Giờ mở cửa</span></h4>
+                        <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                            <div>
+                                <p><strong>Thứ hai đén thứ bảy</strong> 11:30 -22:00</p>
+                            </div>
+                        </div> <h3 class="reservation-phone">+84 243926 2135 (Ext.15)</h3>
+                        <!--<form action="/SendContact/SubmidBooking" method="post" id="reservationform" class="contact-form">-->
+                        <!--<div class="col-md-5 ">-->
+                        <!--<p>Book a table</p>-->
+                        <!--<input name="emailto" type="hidden" value="info@jellythemes.com">-->
+
+                        <!--<input type="date" id="date" name="CheckIn" placeholder="Date" class="text date required">-->
+                        <!--<input type="time" id="time" name="Time" placeholder="Time" class="text time required">-->
+                        <!--<input type="text" id="party" name="Party" placeholder="Party" class="text party required">-->
+                        <!--</div>-->
+                        <!--<div class="col-md-5 ">-->
+                        <!--<p>Contact Details</p>-->
+                        <!--<input type="text" id="reservation_name" name="Name" placeholder="Name" class="text reservation_name required">-->
+                        <!--<input type="email" id="reservation_email" name="Email" class="tex email required" placeholder="Email">-->
+                        <!--<input type="text" id="reservation_phone" name="Tel" placeholder="Phone" class="text reservation_phone required">-->
+                        <!--</div>-->
+                        <!--<div class="col-md-10 ">-->
+                        <!--<textarea id="reservation_message" name="Message" class="text area required" placeholder="Message" rows="6"></textarea>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-4 ">-->
+                        <!--<div class="formSent"><strong>Your Message Has Been Sent!</strong> Thank you for contacting us.</div>-->
+                        <!--<input type="submit" class="button center" value="Make reservation">-->
+                        <!--</div>-->
+                        <!--</form>-->
+                        <!--<div class="col-md-12 jt_col column_container">-->
+                        <!--<div class="voffset60"></div>-->
+                        <!--<div class="ornament"></div>-->
+                        <!--</div>-->
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <input type="date" id="date" name="CheckIn" placeholder="Date" class="text date required form-control">
+                                    </div>
+                                    <div class="col-sm-12 form-group">
+                                        <input type="time" id="time" name="Time" placeholder="Time" class="text time required form-control">
+                                    </div>
+                                    <div class="col-sm-12 form-group">
+                                        <input type="text" id="table-amount" name="table-amount" placeholder="Table-amount" class="text table-amount required form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <input type="text" id="reservation_name" name="Name" placeholder="Name" class="text reservation_name required form-control">
+                                    </div>
+                                    <div class="col-sm-12 form-group">
+                                        <input type="email" id="reservation_email" name="Email" class="tex email required form-control" placeholder="Email">
+                                    </div>
+                                    <div class="col-sm-12 form-group">
+                                        <input type="text" id="reservation_phone" name="Tel" placeholder="Phone" class="text reservation_phone required form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                    </div>
+                </div>
+                <button class="btn btn-lg">Đặt bàn</button>
+
+            </div><div class="vc_row-full-width"></div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Container (Portfolio Section) -->
+<!--<div id="portfolio" class="container-fluid text-center bg-grey">-->
+<!--<h2>Portfolio</h2><br>-->
+<!--<h4>What we have created</h4>-->
+<!--<div class="row text-center slideanim">-->
+<!--<div class="col-sm-4">-->
+<!--<div class="thumbnail">-->
+<!--<img src="paris.jpg" alt="Paris" width="400" height="300">-->
+<!--<p><strong>Paris</strong></p>-->
+<!--<p>Yes, we built Paris</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-4">-->
+<!--<div class="thumbnail">-->
+<!--<img src="newyork.jpg" alt="New York" width="400" height="300">-->
+<!--<p><strong>New York</strong></p>-->
+<!--<p>We built New York</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-4">-->
+<!--<div class="thumbnail">-->
+<!--<img src="sanfran.jpg" alt="San Francisco" width="400" height="300">-->
+<!--<p><strong>San Francisco</strong></p>-->
+<!--<p>Yes, San Fran is ours</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div><br>-->
+
+<!--<h2>What our customers say</h2>-->
+<!--<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">-->
+<!--&lt;!&ndash; Indicators &ndash;&gt;-->
+<!--<ol class="carousel-indicators">-->
+<!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+<!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
+<!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+<!--</ol>-->
+
+<!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+<!--<div class="carousel-inner" role="listbox">-->
+<!--<div class="item active">-->
+<!--<h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>-->
+<!--</div>-->
+<!--<div class="item">-->
+<!--<h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>-->
+<!--</div>-->
+<!--<div class="item">-->
+<!--<h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
+<!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">-->
+<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+<!--<span class="sr-only">Previous</span>-->
+<!--</a>-->
+<!--<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">-->
+<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+<!--<span class="sr-only">Next</span>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Container (Pricing Section) &ndash;&gt;-->
+<!--<div id="pricing" class="container-fluid">-->
+<!--<div class="text-center">-->
+<!--<h2>Pricing</h2>-->
+<!--<h4>Choose a payment plan that works for you</h4>-->
+<!--</div>-->
+<!--<div class="row slideanim">-->
+<!--<div class="col-sm-4 col-xs-12">-->
+<!--<div class="panel panel-default text-center">-->
+<!--<div class="panel-heading">-->
+<!--<h1>Basic</h1>-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<p><strong>20</strong> Lorem</p>-->
+<!--<p><strong>15</strong> Ipsum</p>-->
+<!--<p><strong>5</strong> Dolor</p>-->
+<!--<p><strong>2</strong> Sit</p>-->
+<!--<p><strong>Endless</strong> Amet</p>-->
+<!--</div>-->
+<!--<div class="panel-footer">-->
+<!--<h3>$19</h3>-->
+<!--<h4>per month</h4>-->
+<!--<button class="btn btn-lg">Sign Up</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-4 col-xs-12">-->
+<!--<div class="panel panel-default text-center">-->
+<!--<div class="panel-heading">-->
+<!--<h1>Pro</h1>-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<p><strong>50</strong> Lorem</p>-->
+<!--<p><strong>25</strong> Ipsum</p>-->
+<!--<p><strong>10</strong> Dolor</p>-->
+<!--<p><strong>5</strong> Sit</p>-->
+<!--<p><strong>Endless</strong> Amet</p>-->
+<!--</div>-->
+<!--<div class="panel-footer">-->
+<!--<h3>$29</h3>-->
+<!--<h4>per month</h4>-->
+<!--<button class="btn btn-lg">Sign Up</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-4 col-xs-12">-->
+<!--<div class="panel panel-default text-center">-->
+<!--<div class="panel-heading">-->
+<!--<h1>Premium</h1>-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<p><strong>100</strong> Lorem</p>-->
+<!--<p><strong>50</strong> Ipsum</p>-->
+<!--<p><strong>25</strong> Dolor</p>-->
+<!--<p><strong>10</strong> Sit</p>-->
+<!--<p><strong>Endless</strong> Amet</p>-->
+<!--</div>-->
+<!--<div class="panel-footer">-->
+<!--<h3>$49</h3>-->
+<!--<h4>per month</h4>-->
+<!--<button class="btn btn-lg">Sign Up</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!-- Container (Contact Section) -->
+<section id="testimonials" class="section testimonials parallax voffset100 clearfix " style="background-color:; background-image: url(http://giangurestaurant.com/Content/wp-content/uploads/2015/03/testimonials.jpg),
+url(http://giangurestaurant.com/Content/wp-content/uploads/2015/03/menu_right.jpg);">
+    <div class="container">
+        <div class="row jt_row jt_row-fluid">
+            <div class="col-md-12 jt_col  ">
+                <div>
+                    <div class="voffset40"></div><a href="https://www.tripadvisor.com.vn/Restaurant_Review-g293924-d7103885-Reviews-Gia_Ngu_Restaurant-Hanoi.html"><img width="110" height="110" src="http://giangurestaurant.com/Content/images/2015.png" class="center testimonials_img" alt="testimonials_logo" /></a><h2 style="color: #bfa760">Cam kết<span>”</span></h2><div class="testimonials carousel-wrapper  with_pagination">
+                    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <h4 class="text__inner">"Món ngon vị đậm đà hương vị quê hương"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
+                            </div>
+                            <div class="item">
+                                <h4 class="text__inner">"Luôn đổi mới món ăn "<br><span>John Doe, Salesman, Rep Inc</span></h4>
+                            </div>
+                            <div class="item">
+                                <h4 class="text__inner">"Tâm huyết trong từng món ngon"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div><div class="voffset80"></div>
+            </div>
+        </div>
+    </div><div class="vc_row-full-width"></div>
+
+    </div>
+</section>
+<div id="contact" class="container-fluid bg-grey">
+    <h2 class="text-center" style="color: white">Liên hệ</h2>
+    <div class="row">
+        <div class="col-sm-5">
+            <p>Liên hệ cho chúng tôi , sau nhiều nhất 24h chúng tôi sẽ trả lời</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span> Ha Noi, Viet Nam</p>
+            <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> nghiemxuanhop@gmail.com</p>
+        </div>
+        <div class="col-sm-7 slideanim">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control contact-name" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control contact-email" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control contact-comment" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-default pull-right contact-create" type="submit">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Google Maps -->
+<div id="googleMap" style="height:400px;width:100%;"></div>
+<script>
+    function myMap() {
+        var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+        var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        var marker = new google.maps.Marker({position:myCenter});
+        marker.setMap(map);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpv8dHmRrQAYAf5rBuLOZuQxpPJ3j2sgo&callback=myMap"></script>
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+<script th:src="@{/js/respond.min.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/home.js}"></script>
+
+</body>
+</html>

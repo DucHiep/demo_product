@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    <link th:href="@{/css/style.default.css}" rel="stylesheet" id="theme-stylesheet">
+
+    <!-- your stylesheet with modifications -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top ">
+    <div class="container1 ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a th:href="@{/home}" class="navbar-brand" href="#myPage"><img src="http://giangurestaurant.com/Content/images/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/home}" >Trang chủ</a></li>
+                <li><a th:href="@{/}">MENU</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                <li class="anonymous"><a th:href="@{/login}">Đăng nhập</a></li>
+                <li><a th:href="@{/order/guid}" class="order-anonymous" >Lịch sử mua hàng</a></li>
+                <li class="dropdown user-logged"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><p class="username-logged"></p></a>
+                    <ul class="dropdown-menu" style="background-color: black;">
+                        <li><a th:href="@{/user/detail}" ><span class="glyphicon glyphicon-info-sign"></span>Thông tin tài khoản</a></li>
+                        <li><a th:href="@{/order/user}" class="order-history-link" >Lịch sử mua hàng</a></li>
+                        <li><a class="logout-user" th:href="@{/logout}" ><span class=" glyphicon glyphicon-off logout" ></span>Đăng xuất</a></li>
+
+                        <!--</ul>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+                <li>
+                    <div class="navbar-buttons">
+
+                        <div class="navbar-collapse collapse right" id="basket-overview">
+                            <a th:href="@{/cart}" class="btn btn-primary navbar-btn"><i class=" glyphicon glyphicon-shopping-cart"></i><span class="hidden-sm"></span></a>
+                        </div>
+                        <!--/.nav-collapse -->
+
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="all">
+
+    <div id="content">
+        <div class="container-fluid">
+
+            <div class="col-md-12">
+                <div class="box">
+                    <form  th:action="@{/product/search}" th:object="${product}" method="get"  role="search">
+                        <div style="list-style-type: none" class="form-group">
+                            <section id="ajax-example">
+                                <div  class="awesomplete">
+                                    <div style="width: 100%" class="input-group">
+                                        <input style="width: 100% " placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">
+
+                                    </div>
+                                    <!--<input placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">-->
+
+                                    <!--<ul role="listbox" id="awesomplete_list_6" hidden="">-->
+                                    <!--<li aria-selected="false" id="awesomplete_list_6_item_0"><mark>Ca</mark>nada</li>-->
+                                    <!--<li aria-selected="false" id="awesomplete_list_6_item_1"><mark>Ca</mark>meroon</li>-->
+                                    <!--<li aria-selected="false" id="awesomplete_list_6_item_2">Madagas<mark>ca</mark>r</li>-->
+                                    <!--<li aria-selected="false" id="awesomplete_list_6_item_3">New <mark>Ca</mark>ledonia</li>-->
+                                    <!--<li aria-selected="false" id="awesomplete_list_6_item_4">Central Afri<mark>ca</mark>n Republic</li>-->
+                                    <!--</ul>-->
+                                    <!--<div class="input-group-btn">-->
+                                    <!--<button class="btn btn-default" type="submit" value="Submit"><i class="glyphicon glyphicon-search"></i></button>-->
+                                    <!--</div>-->
+                                    <span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true" hidden="">No results found</span>
+                                    <!--<div class="input-group">-->
+                                    <!--<input  placeholder="Tìm kiếm" name="name" class="form-control" type="text" autocomplete="off" aria-owns="awesomplete_list_6" role="combobox">-->
+                                    <!--<div class="input-group-btn">-->
+                                    <!--<button class="btn btn-default" type="submit" value="Submit"><i class="glyphicon glyphicon-search"></i></button>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+
+                                </div>
+                            </section>
+
+                        </div>
+
+                        <!--<button type="submit" value="Submit" class="btn btn-default right">Tìm kiếm</button>-->
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+                <!--<div class="container">-->
+                <!--<div th:if="${vm.getProductDetailModels().size() != 0}">-->
+                <!--<h2>Các sản phẩm trùng với "<span th:text="${vm.getKeyWord()}"></span>"</h2>-->
+                <!--<div class="row" th:each="product : ${vm.getProductDetailModels()}">-->
+                <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">-->
+                <!--<a th:href="@{'/product/detail/' + ${product.getId()}}">-->
+                <!--<img th:src="${product.getImage()}" th:alt="${product.getShortDesc()}" class="rounded float-right" style="width: 200px;height: 200px">-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">-->
+                <!--<h3 th:text="${product.getName()}"></h3>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div th:unless="${vm.getProductDetailModels().size() != 0}">-->
+                <!--<h2>Không có sản phẩm nào</h2>-->
+                <!--<button class="btn btn-default"><a th:href="@{/}">Quay về trang chủ</a></button>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Danh mục sản phẩm</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked category-menu">
+
+                            <li th:each="category : ${vm.getProductCategoryList()}">
+                                <a th:href="@{'?categoryId='+${category.getId()}}" th:text="${category.getName()}"></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+
+                <!-- *** MENUS AND FILTERS END *** -->
+
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="box">
+                    <h1 th:text="${vm.getProductCategory().getName()}"></h1>
+                    <div class="row">
+                        <strong>Sắp xếp theo:</strong>
+                        <a th:href="@{'?categoryId='+${vm.getProductCategory().getId()}+'&sortBy=increase'}" class="btn btn-default btn-sm btn-primary">Giá tăng dần</a>
+                        <a th:href="@{'?categoryId='+${vm.getProductCategory().getId()}+'&sortBy=decrease'}" class="btn btn-default btn-sm btn-primary">Giá giảm dần</a>
+
+                    </div>
+                    <!--<p>In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide.</p>-->
+                </div>
+
+                <!--<div class="box info-bar">-->
+
+                <!--<div class="row">-->
+                <!--<strong>Sắp xếp theo:</strong>-->
+                <!--<a th:href="@{'?categoryId='+${vm.getProductCategory().getId()}+'&sortBy=increase'}" class="btn btn-default btn-sm btn-primary">Giá tăng dần</a>-->
+                <!--<a th:href="@{'?categoryId='+${vm.getProductCategory().getId()}+'&sortBy=decrease'}" class="btn btn-default btn-sm btn-primary">Giá giảm dần</a>-->
+
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="row products">
+                    <div class="col-md-4 col-sm-6" th:each="product : ${vm.getProductList()}">
+                        <div class="product">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a th:href="'/product/'+ ${product.getId()}">
+                                            <!--/*@thymesVar id="product" type=""*/-->
+                                            <img th:src="${product.mainImage()}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a th:href="'/product/'+ ${product.getId()}">
+                                            <img th:src="${product.mainImage()}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="menu.html" class="invisible">
+                                <img th:src="${product.mainImage()}" alt="" class="img-responsive">
+                            </a>
+                            <div class="text">
+                                <h3><a href="menu.html" th:text="${product.getName()}"></a></h3>
+                                <p class="price">.000VNĐ</p>
+                                <span class="price" style="text-align: center" th:text="${product.getPrice()}"> </span>
+
+                                <p class="buttons">
+                                    <a th:href="'/product/'+ ${product.getId()}" class="btn btn-default">Chi tiết</a>
+                                    <a  class="btn btn-primary cart" th:attr="data-product=${product.getId()}"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm vào giỏ</a>
+                                </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.product -->
+                    </div>
+
+
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.products -->
+
+
+
+            </div>
+            <!-- /.col-md-9 -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <div id="contact" class="container-fluid bg-grey">
+        <h2 class="text-center" style="color: white">Liên hệ</h2>
+        <div class="row">
+            <div class="col-sm-5">
+                <p>Liên hệ cho chúng tôi , sau nhiều nhất 24h chúng tôi sẽ trả lời</p>
+                <p><span class="glyphicon glyphicon-map-marker"></span> Ha Noi, Viet Nam</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> nghiemxuanhop98@gmail.com</p>
+            </div>
+            <div class="col-sm-7 slideanim">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                    </div>
+                </div>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <button class="btn btn-default pull-right" type="submit">Gửi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="container-fluid text-center">
+        <a href="#myPage" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+    </footer>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/vi.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.js"></script>
+
+    <script th:src="@{/js/respond.min.js}"></script>
+
+    <script th:src="@{/js/index.js}"></script>
+
+    <script th:src="@{/js/list-product/list-product.js}"></script>
+
+    <script>
+        var a = moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+        console.log(a);
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", "http://"+window.location.host+"/api/product/getallproduct", true);
+        ajax.onload = function() {
+            var list = JSON.parse(ajax.responseText).data
+            var suggest = []
+            for(var label of list){
+                suggest.push(reName(label))
+            }
+            function reName(label) {
+                var obj = {}
+                obj.label = "<img style='height: 20px;width: 20px' src='"+label.image+"'/> "+"<span style='font-size: 90%'>"+label.name+"</span> "+" <span   style='font-size: 90% ;color:goldenrod'>"+label.price+"</span >"+"<span style='font-size:90% ; color: goldenrod;'>.000 VNĐ</span>"
+                obj.value = label.name
+                return obj
+            }
+            new Awesomplete(document.querySelector("#ajax-example input"),{ list: suggest });
+        };
+        ajax.send();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top ">
+    <div class="container1 ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage"><img src="http://giangurestaurant.com/Content/images/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/home}" >Trang chủ</a></li>
+                <li><a th:href="@{/}">MENU</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                <li class="anonymous"><a th:href="@{/login}">Đăng nhập</a></li>
+                <li><a th:href="@{/order/guid}" class="order-anonymous" >Lịch sử mua hàng</a></li>
+                <li class="dropdown user-logged"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><p class="username-logged"></p></a>
+                    <ul class="dropdown-menu" style="background-color: black;">
+                        <li><a th:href="@{/user/detail}" ><span class="glyphicon glyphicon-info-sign"></span>Thông tin tài khoản</a></li>
+                        <li><a th:href="@{/order/user}" class="order-history-link" >Lịch sử mua hàng</a></li>
+                        <li><a class="logout-user" th:href="@{/logout}" ><span class=" glyphicon glyphicon-off logout" ></span>Đăng xuất</a></li>
+
+                        <!--</ul>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="navbar-buttons">
+
+                        <div class="navbar-collapse collapse right" id="basket-overview">
+                            <a th:href="@{/cart}" class="btn btn-primary navbar-btn"><i class=" glyphicon glyphicon-shopping-cart"></i><span class="hidden-sm"></span></a>
+                        </div>
+                        <!--/.nav-collapse -->
+
+
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="menu" class="container-fluid text-center clearfix" >
+    <div class="category container">
+        <div class="row slideanim ">
+            <div class="col-sm-6 col-md-6 col-xs-12">
+                <img class="image__product product-main-img" style="padding-top: 30px; width: 100%;height: 300px " id="zoom_01" th:src="${vm.getProduct().mainImage()}" th:data-zoom-image="${vm.getProduct().mainImage()}"/>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4" th:each="productImage : ${vm.getProduct().getListProductImages()}">
+                        <img class="product-img " th:src="${productImage.getImage()}" th:attr="data-image=${productImage.getImage()}" style="width:100% ;height: 70px;cursor: pointer" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-12 ">
+                <h2 class="section-title " th:text="${vm.getProduct().getName()}"></h2>
+                <p th:text="${vm.getProduct().getShortDesc()}"></p>
+                <br>
+                <h3 class="text-left" th:text="'Giá : '+${vm.getProduct().getPrice()+'.000 VNĐ'}"></h3>
+                <br>
+
+                <button class="btn btn-lg cart" th:attr="data-product = ${vm.getProduct().getId()}">Đặt hàng</button>
+
+            </div>
+        </div>
+        <h1>Sản phẩm cùng loại</h1>
+        <div class="your-class">
+            <th:block th:each="product : ${vm.getProductList()}">
+
+                <a th:href="@{ ${product.getId()}}" >
+                    <div class="slide_slick">
+                        <div class="image__product">
+                            <img class="image__product__inner img-thumbnail"
+                                 th:src="${product.mainImage()}" alt=""></div>
+                        <h3 style="color: #bfa760 ;text-align: center" th:text="${product.getName()}"></h3>
+                    </div>
+                </a>
+            </th:block>
+        </div>
+    </div>
+
+</div>
+
+<div id="contact" class="container-fluid bg-grey">
+    <h2 class="text-center" style="color: white">Liên hệ</h2>
+    <div class="row">
+        <div class="col-sm-5">
+            <p>Liên hệ cho chúng tôi , sau nhiều nhất 24h chúng tôi sẽ trả lời</p>
+            <p><span class="glyphicon glyphicon-map-marker"></span> Ha Noi, Viet Nam</p>
+            <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+            <p><span class="glyphicon glyphicon-envelope"></span> nghiemxuanhop98@gmail.com</p>
+        </div>
+        <div class="col-sm-7 slideanim">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-default pull-right" type="submit">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+</footer>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+<script>
+    $('.your-class').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+    });
+    $(".product-img").on("click", function () {
+        $(".product-main-img").attr("src",$(this).data("image"));
+        // $(".product-main-img").attr("data-zoom-image",$(this).data("image"));
+    });
+</script>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/list-product/list-product.js}"></script>
+
+</body>
+</html>
